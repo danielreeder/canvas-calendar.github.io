@@ -11,4 +11,4 @@ def home():
 @views.route("canvas")
 def canvas():
     writeAssignments(courses)
-    return render_template("index.html") 
+    return render_template("canvas.html") 

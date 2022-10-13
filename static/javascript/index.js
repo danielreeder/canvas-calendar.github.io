@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-fs.readFile('../../assignments.txt', 'ascii', (err, data) => {
+fs.readFile('assignments.txt', 'ascii', (err, data) => {
     if (err){
         console.error(err);
         return;
