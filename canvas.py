@@ -17,8 +17,6 @@ def parseDate(date):
     dtObject = dtObject.astimezone(pytz.timezone("America/Los_Angeles"))
     return dtObject
 
-print("Hello GitHub!")
-
 # Canvas API URL
 API_URL = "https://canvas.uoregon.edu"
 # Canvas API key
