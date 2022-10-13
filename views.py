@@ -1,9 +1,14 @@
-from flask import Blueprint, render_template
-from canvas import me, parseDate
+from asyncore import write
+from flask import Blueprint, render_template, jsonify
+from canvas import courseList as courses, writeAssignments
 
 views = Blueprint(__name__, "views")
 
 @views.route("/")
 def home():
-    print("Hello world")
     return render_template("index.html")
+
+@views.route("canvas")
+def canvas():
+    writeAssignments(courses)
+    return render_template("index.html") 

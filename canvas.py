@@ -27,19 +27,25 @@ canvas = Canvas(API_URL, API_KEY)
 
 me = canvas.get_user(156260)
 
-courses = me.get_courses()
+courseList = me.get_courses()
 
 # counts number of assignments for each course
 # prints the due date and name of each assignment
 # prints the number of assignments for each course
-for course in courses:
-    print('\n' + course.name + '\n')
-    assignments = course.get_assignments()
-    count = 0
-    for assignment in assignments:
-        count += 1
-        print(assignment.name)
-        dueDate = parseDate(assignment.due_at)
-        print(dueDate.strftime("%B %d, %Y" + " at" + " %I:%M" + '\n'))
-    print("Assignment Count: " + str(count) + '\n')
-
+def printAssignments(courses):
+    for course in courses:
+        print('\n' + course.name + '\n')
+        assignments = course.get_assignments()
+        count = 0
+        for assignment in assignments:
+            count += 1
+            print(assignment.name)
+            dueDate = parseDate(assignment.due_at)
+            print(dueDate.strftime("%B %d, %Y" + " at" + " %I:%M" + '\n'))
+        print("Assignment Count: " + str(count) + '\n')
+    return course.get_assignments()
+    
+def writeAssignments(courses):
+    with open('assignments.txt', 'w') as f:
+        for course in courses:
+            f.write(course.name.split(" (")[0] + ',')
