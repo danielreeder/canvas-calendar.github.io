@@ -27,7 +27,8 @@ canvas = Canvas(API_URL, API_KEY)
 
 me = canvas.get_user(156260)
 
-courseList = me.get_courses()
+courses = me.get_courses()
+
 
 # counts number of assignments for each course
 # prints the due date and name of each assignment
