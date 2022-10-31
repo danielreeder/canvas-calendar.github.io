@@ -1,7 +1,11 @@
 # Import the Canvas class
 from canvasapi import Canvas
 from datetime import datetime
+from dotenv import load_dotenv
 import pytz
+import os
+
+load_dotenv()
 
 # takes in the due date of an assignment and turns it into a datetime object
 def parseDate(date):
@@ -18,9 +22,9 @@ def parseDate(date):
     return dtObject
 
 # Canvas API URL
-API_URL = "https://canvas.uoregon.edu"
+API_URL = os.getenv('CANVAS_URL')
 # Canvas API key
-API_KEY = "2391~oad7E1Au5U7jN8WI32Jw4Iq1mS8W3tihD8f9McD5BbCkXLnyxtPnYcvuwdYPXVZR"
+API_KEY = os.getenv('CANVAS_API_KEY')
 
 # Initialize a new Canvas object
 canvas = Canvas(API_URL, API_KEY)

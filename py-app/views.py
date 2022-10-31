@@ -33,7 +33,7 @@ def nodeSend():
         'courses': courseList
     }
 
-    res = requests.post('http://127.0.0.1:3000/node-send', json=data)
+    res = requests.post('http://127.0.0.1:6000/node-send', json=data)
 
     returned = res.json()
 
@@ -41,7 +41,7 @@ def nodeSend():
     result = returned['received']
     print("Returned from Node.js: ", result)
 
-    return render_template("canvas.html")
+    return render_template("node-send.html")
 
 
 
