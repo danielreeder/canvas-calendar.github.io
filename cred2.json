@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "canvas-calendar-367206",
+  "private_key_id": "4b52ab09a34c8e7cdf17ab9f6d2daacf82dc7f6e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCmrIPXOX4cc6nc\nFkJsUQqIQiSF6kn1slbXHJE8RGgqBlNh+Y3RA70k3qdGbyk/qfIZsYfrszpKLopq\nZpj6Q+L0JXtsUcFA6mdbp4h7O5UakwoU6qKScbJX8O54Ho2LNgJ3cfOTTLF7OpLY\nz215eHY6L/iIAbIVwb8GoU4Ui+OUUEAhmsMcVl8ziqtpDj5r14QPL1VkWvPswztA\n0dz4h24gfLeAR6tAFMuBO2x57e6VshpA3gs3ZwdoStj63R3x1HzyszGr6d5obZrf\nrCVboYd/UjD8C4PS5p55iZ3skBA3w5z+sP/mvWzjxmrpOIlpv2H6zmgUwG4bdbB5\nSdH0w3yJAgMBAAECggEABuHuUsuguceL7tbreMIS84P5sp71XWQ3IkxfcfPoMj4P\nIOdXdBdZruVT1nx+IU8g/G8gi/rbcBdCZ3jjncgCXe8TTOqGVqonSPle0Snpcw65\n1pnGy1HPGcMM8eBfG23IRcrqkj1TQeGuES5lmKPBDA+RjXo2cqAMxZcRHJeXNvdV\nUqQGV7jrVEILhCNkOFg66FP1Qpnrp+ilW1S78T04GQBKjBa/cBYDiBJSKBZM81mT\nf102mLAx5NHGbo5Ca44M7CmQxAfM2EZja+JkPuMVVdEIMWLPI3oRtSRnqfcD7vv6\nApvlnuGV6SUjSZtIiWEJhj78JnpRijZLWFpMc7t81QKBgQDSREFMz5q0pQYsUYqG\nQttYRwL1Q3dqEB8IeKwCBlE3odde1sUV8/gB5eE/IBRWDpSY4mz//0qGpykAOcje\nnWgTIUBpgw5oHbp+kewxLmn8xsr3DnOFx2hRTris5pWDS9iTVwJVbtedYVXcGaJN\nys4wMdfuih2EPF3UGzxN/0CqpQKBgQDK7P7vei9sS76rrSyD8csHPSFStsJDhboA\nUS9cJJepepCsLY/G24xIAKGNQZcXY+ZAjYG4VsGo1orM+Cm/H2fBs4KJ9ClBW7p+\nffbOno8Xy9yrSQtHWnAGDviAOulqIkuq+ulpblkALlDTy6F566cETg7p+OQKhxxx\ne9xL+p/5FQKBgEB8JFatOLH8BlejLkucx25cYODdLws9JHdRotcAHvpjzQxN66We\n68mRObJFYVc/I317u5gLMEz5iQ6DqkHznk53nSx+v/VYYLCeigRPSrv2L5rzOKSn\nkiuVa/fCw8m/gg012wZedwvSJSXaSrd24iNPtfx3KTQ72z7Il4cIKEntAoGAVszT\nK5qHKHqp34NetD28C6ehVmEobXuJGVOgv3hDi1ILCisfAf+tXKswb1ysBWxM9DXT\nVAeAJPlIO+625LLJTfi8EMho0TUsa6jz5mO6b4JbLMU81tOfcWf78dXBPA3ZchSL\nvPZfiY1GM6I5uw4KzfOZu4kj+kDa8Mv7amCVBxUCgYASaI+ZWQItG9NufKQXF3Xb\n1ER6R42QLyy0aeOBcgCbS00RjGFNmabuNudM6Y4Xl2jJiULR2FrTTHa9ymIdcbSa\nt0q2QgvcDimSYNRplOf7wTK7ddTlykoFOrrxNLCYHmBV+zi4oTw1KQgLdFMT8DWw\nCMVAxfHlpDhaSZECc7Ef6Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "canvas-calendar@canvas-calendar-367206.iam.gserviceaccount.com",
+  "client_id": "112231128970122748913",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/canvas-calendar%40canvas-calendar-367206.iam.gserviceaccount.com"
+}
