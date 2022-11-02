@@ -13,6 +13,8 @@ def home():
 
 @views.route("/canvas")
 def canvas():
+    # needs to take all classes and assignments as json and pass to html
+    # to be dealt with in javascript
     data = {'username': 'divinemamma', 'password': 'yahoo1'}
     return render_template("canvas.html", data=data)
 
