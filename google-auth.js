@@ -6,11 +6,11 @@ const { auth } = require('google-auth-library')
 const { calendar } = require('googleapis/build/src/apis/calendar')
 const requestPromise = require('request-promise')
 const fs = require('fs').promises
-require('dotenv').config()
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar']
 const TOKEN_PATH = path.join(process.cwd(), 'token.json')
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json')
+
 async function loadSavedCredentialsIfExist() {
   try {
     const content = await fs.readFile(TOKEN_PATH);
@@ -87,7 +87,8 @@ async function listEvents(auth) {
 function addAssignment(assignment) {
     // console.log(assignment)
     // authorize()
-    const calendar = google.calendar({version: 'v3', auth});
+    // const calendar = google.calendar({version: 'v3', auth});
+    const calendar = google.calendar({version: "v3", auth})
     calendar.events.insert({
         auth: auth,
         calendarId: 'primary',
@@ -101,7 +102,11 @@ function addAssignment(assignment) {
     })
 }
 
+var assign = {
+  "summary": "Ch 3 HW 3", "start": {"dateTime": "2022-09-27T15:20:17Z", "timeZone": "America/Los_Angeles"}, "end": {"dateTime": "2022-10-08T06:59:00Z", "timeZone": "America/Los_Angeles"}, "client_email": "danielreeder123@gmail.com", "reminders": {"useDefault": false, "overrides": [{"method": "email", "minutes": 1440}]}
+}
 exports.listEvents = listEvents
 exports.addAssignment = addAssignment
 
-authorize().then(listEvents).catch(console.error);
+// authorize().then(listEvents).catch(console.error);
+authorize().then(addAssignment(assign)).catch(console.error)

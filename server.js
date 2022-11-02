@@ -1,8 +1,8 @@
-const request = require('request-promise')
+// const request = require('request-promise')
 const express = require('express')
 const bodyParser = require('body-parser')
 require('dotenv').config()
-const google = require('./google-auth')
+const google = require('./google-int')
 
 var app = express()
 
@@ -12,19 +12,13 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.post("/node-send", (req, res) => {
-    // var courses = req.body.courses
-    // console.log(courses)
-
-    // res.json({
-    //     received: google.sum()
-    // })
-    console.log(req.body)
-    var count
+    var count = 0
     req.body.forEach(element => {
       google.addAssignment(element)
       console.log('Assignment added')
-      count++
+      count += 1
     });
+    console.log(google.listEvents())
 
     res.json({
       received: 'true',

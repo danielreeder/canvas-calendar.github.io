@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, jsonify, request
 import canvas as cv
 import json
 import requests
+import random as rand
 
 views = Blueprint(__name__, "views")
 
@@ -12,17 +13,7 @@ def home():
 
 @views.route("/canvas")
 def canvas():
-    # writeAssignments(courses)
-    # return render_template("canvas.html") 
-    data = request.get_json()
-    print(data)
-
-    ls = data['array']
-    result = sum(ls)
-    
-    return json.dumps({
-        "result": result
-    })
+    return render_template("canvas.html")
 
 @views.route("/node-send")
 def nodeSend():
@@ -39,25 +30,19 @@ def nodeSend():
         for assignment in assignments:
             assignmentdata = {
                 "summary": assignment.name,
-                # "description": assignment.description,
                 "start": {
-                    "dateTime": assignment.created_at,
+                    "dateTime": assignment.due_at,
                     "timeZone": "America/Los_Angeles",
                 },
                 "end": {
                     "dateTime": assignment.due_at,
                     "timeZone": "America/Los_Angeles",
                 },
-                "client_email": "danielreeder123@gmail.com",
-                "reminders": {
-                    "useDefault": False,
-                    "overrides": [
-                        {'method': 'email', 'minutes': 1440},
-                    ],
-                },
+                "colorId": rand.randint(1,11),
             }
             assignmentJson = json.dumps(assignmentdata)
             assignmentInfo += {assignmentJson}
+            break
 
     res = requests.post('http://127.0.0.1:6000/node-send', json=assignmentInfo)
 
