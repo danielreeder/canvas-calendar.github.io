@@ -1,9 +1,9 @@
 # Import the Canvas class
 from canvasapi import Canvas
 from datetime import datetime
+import os
 from dotenv import load_dotenv
 import pytz
-import os
 
 load_dotenv()
 

@@ -13,16 +13,11 @@ def home():
 
 @views.route("/canvas")
 def canvas():
-    return render_template("canvas.html")
+    data = {'username': 'divinemamma', 'password': 'yahoo1'}
+    return render_template("canvas.html", data=data)
 
 @views.route("/node-send")
 def nodeSend():
-    # courseList = []
-    # for course in courses:
-    #     courseList += [course.name]
-    # data = {
-    #     'courses': courseList
-    # }
     courses = cv.getCourses()
     assignmentInfo = []
     for course in courses:
@@ -49,17 +44,6 @@ def nodeSend():
     returned = res.json()
 
     print(returned['added'])
-
-
-
-    # res = requests.post('http://127.0.0.1:6000/node-send', json=data)
-
-    # returned = res.json()
-
-    # print(returned)
-    # result = returned['received']
-    # print("Returned from Node.js: ", result)
-
     return render_template("node-send.html")
 
 
