@@ -1,9 +1,9 @@
 # Import the Canvas class
 from canvasapi import Canvas
 from datetime import datetime
+import os
 from dotenv import load_dotenv
 import pytz
-import os
 
 load_dotenv()
 
@@ -58,6 +58,8 @@ def writeAssignments(courses):
         for course in courses:
             f.write(course.name.split(" (")[0] + ',')
 
+### need to write a function to turn assignments into json data
+### to be passed to javascript file for website
 def getAssignments(course):
     return course.get_assignments()
 

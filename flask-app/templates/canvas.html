@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='javascript/canvas.js')}}">
+    </script>
+    <script type="text/javascript">
+        myVar = myFunc('{{ data|tojson }}')
+        console.log(myVar)
+    </script>
     <title>Canvas</title>
 </head>
 <body>
-    <div>
-        <h1>
-            Goose
-        </h1>
-        <a href="./index.html"></a>
-        <a href="./node-send.html"></a>
-    </div>
-<script 
-    type="text/javascript" 
-    src="{{ url_for('static', filename='javascript/index.js')}}">
-</script>
+    <div class="class-scroll"></div>
+        <div class="class-header-container">
+            <h2 class="class-header">Temp Class</h2>
+        </div>
+        <div class="assignment-container">{{ value }}</div>
 </body>
 </html>
