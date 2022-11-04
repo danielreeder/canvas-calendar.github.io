@@ -5,21 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Canvas</title>
     <script 
-        type="text/javascript" 
         src="{{ url_for('static', filename='javascript/canvas.js')}}">
     </script>
-    <script type="text/javascript">
-        myVar = myFunc('{{ data|tojson }}')
-        console.log(myVar)
-    </script>
-    <title>Canvas</title>
 </head>
 <body>
     <div class="class-scroll"></div>
         <div class="class-header-container">
-            <h2 class="class-header">Temp Class</h2>
+            <h2 class="class-header"></h2>
         </div>
-        <div class="assignment-container">{{ value }}</div>
+        <div class="assignment-container"></div>
+
+
+
 </body>
+
+<script type="text/javascript">
+    let courseArr = parseCourses({{ courses|tojson }})
+    document.querySelector(".class-header").textContent = courseArr[0].name
+</script>
+
 </html>

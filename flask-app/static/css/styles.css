@@ -1,3 +1,18 @@
-h1{
-    color: red;
+body {
+    display: flex;
+    justify-content: center;
 }
+
+.class-scroll {
+    display: flex;
+    border: 1px solid black;
+    width: 85%;
+    height: 200px;
+    max-height: 25%;
+    justify-content: flex-start;
+}
+
+.class-header-container {
+    border: 1px solid black;
+}
+

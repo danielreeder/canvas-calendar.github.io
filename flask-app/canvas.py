@@ -1,27 +1,10 @@
 # Import the Canvas class
 from canvasapi import Canvas
-from datetime import datetime
 import os
 from dotenv import load_dotenv
-import pytz
-
+import random as rand
+import json
 load_dotenv()
-
-# takes in the due date of an assignment and turns it into a datetime object
-def parseDate(date):
-    if (date):
-        splitDate = date.split("-")
-        splitDate[2] = splitDate[2].split("T")
-        splitDate.append(splitDate[2][1])
-        splitDate[2] = splitDate[2][0]
-        splitDate[3] = splitDate[3].replace("Z","")
-        splitTime = splitDate[3].split(":")
-        dtObject = datetime(int(splitDate[0]), int(splitDate[1]), int(splitDate[2]),
-                            int(splitTime[0]), int(splitTime[1]))
-        dtObject = pytz.utc.localize(dtObject)
-        dtObject = dtObject.astimezone(pytz.timezone("America/Los_Angeles"))
-        return dtObject
-    return None
 
 # Canvas API URL
 API_URL = os.getenv('CANVAS_URL')
@@ -31,38 +14,61 @@ API_KEY = os.getenv('CANVAS_API_KEY')
 # Initialize a new Canvas object
 canvas = Canvas(API_URL, API_KEY)
 
-me = canvas.get_user(156260)
+user = canvas.get_user(156260)
 
-courses = me.get_courses()
+courses = user.get_courses() 
 
-
-# counts number of assignments for each course
-# prints the due date and name of each assignment
-# prints the number of assignments for each course
-def printAssignments(courses):
+def assignmentsToJson(courses):
+    assignments_Json = []
     for course in courses:
-        print('\n' + course.name + '\n')
         assignments = course.get_assignments()
-        count = 0
         for assignment in assignments:
-            count += 1
-            print(assignment.name)
-            if parseDate(assignment.due_at):
-                dueDate = parseDate(assignment.due_at)
-            print(dueDate.strftime("%B %d, %Y" + " at" + " %I:%M" + '\n'))
-        print("Assignment Count: " + str(count) + '\n')
-    return course.get_assignments()
-    
-def writeAssignments(courses):
-    with open('assignments.txt', 'w') as f:
-        for course in courses:
-            f.write(course.name.split(" (")[0] + ',')
+            assignments_Json += assignmentToJson(assignment)
+            
+    return assignments_Json
 
-### need to write a function to turn assignments into json data
-### to be passed to javascript file for website
-def getAssignments(course):
-    return course.get_assignments()
 
-def getCourses():
-    return me.get_courses()
+def assignmentToJson(assignment):
+    return {json.dumps({
+        "summary": assignment.name,
+        "start": {
+            "dateTime": assignment.due_at,
+            "timeZone": "America/Los_Angeles",
+        },
+        "end": {
+            "dateTime": assignment.due_at,
+            "timeZone": "America/Los_Angeles",
+        },
+        "colorId": rand.randint(1,11),
+        "id": assignment.id
+    })}
 
+def coursesToJson(courses):
+    courses_Json = []
+    for course in courses:
+        courses_Json += courseToJson(course)
+
+    return courses_Json
+
+def courseToJson(course):
+    return {json.dumps({
+        "name": course.course_code,
+        "id": course.id,
+    })}
+
+
+# def main():
+#     # Canvas API URL
+#     API_URL = os.getenv('CANVAS_URL')
+#     # Canvas API key
+#     API_KEY = os.getenv('CANVAS_API_KEY')
+
+#     # Initialize a new Canvas object
+#     canvas = Canvas(API_URL, API_KEY)
+
+#     me = canvas.get_user(156260)
+
+#     courses = me.get_courses() 
+#     print(assignmentsToJson(courses))
+#     print(coursesToJson(courses))
+# main()
