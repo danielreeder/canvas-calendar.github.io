@@ -7,6 +7,7 @@ function parseCourses(courses) {
     return courseArr
 }
 
+// next thing to do, figure out how to sort assignments by course
 function parseAssignments(assignments) {
     let assignArr = []
     assignments.forEach(element => {
