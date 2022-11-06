@@ -11,11 +11,46 @@
     </script>
 </head>
 <body>
-    <div class="class-scroll"></div>
+    <div class="class-scroll">
         <div class="class-header-container">
             <h2 class="class-header"></h2>
         </div>
-        <div class="assignment-container"></div>
+        <div class="assignment-container">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div>
+    <div class="class-scroll">
+        <div class="class-header-container">
+            <h2 class="class-header"></h2>
+        </div>
+        <div class="assignment-container">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div>
+    <div class="class-scroll">
+        <div class="class-header-container">
+            <h2 class="class-header"></h2>
+        </div>
+        <div class="assignment-container">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div>
+    <div class="class-scroll">
+        <div class="class-header-container">
+            <h2 class="class-header"></h2>
+        </div>
+        <div class="assignment-container">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div>
+    <div class="class-scroll">
+        <div class="class-header-container">
+            <h2 class="class-header"></h2>
+        </div>
+        <div class="assignment-container">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div>
 
 
 
@@ -23,7 +58,18 @@
 
 <script type="text/javascript">
     let courseArr = parseCourses({{ courses|tojson }})
-    document.querySelector(".class-header").textContent = courseArr[0].name
+    let assignArr = parseAssignments({{ assignments|tojson }})
+    console.log(assignArr[0])
+    headers = document.querySelectorAll(".class-header")
+    assigns = document.querySelectorAll(".assign-header")
+    console.log(assigns.length)
+    for (let i = 0; i < headers.length; ++i) {
+        headers[i].textContent = courseArr[i].name
+    }
+    for (let i = 0; i < assigns.length; ++i) {
+        console.log(assignArr[i].summary)
+        assigns[i].textContent = assignArr[i].summary
+    }
 </script>
 
 </html>

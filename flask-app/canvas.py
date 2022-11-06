@@ -40,7 +40,8 @@ def assignmentToJson(assignment):
             "timeZone": "America/Los_Angeles",
         },
         "colorId": rand.randint(1,11),
-        "id": assignment.id
+        "id": assignment.id,
+        "course-id": assignment.course_id
     })}
 
 def coursesToJson(courses):
