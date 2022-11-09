@@ -9,9 +9,21 @@
     <script 
         src="{{ url_for('static', filename='javascript/canvas.js')}}">
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body class="bg-color">
-    <div class="class-scroll">
+    <div class="site-header shadow-card">
+        <a id="a" class="refresh-btn">Update</a>
+    </div>
+    {# <div class="class-scroll shadow-card">
+        <div class="class-header-container shadow-card">
+            <h2 class="class-header"></h2>
+        </div>
+        <div class="assignment-container shadow-card">
+            <h2 class="assign-header"></h2>
+        </div>
+    </div> #}
+    {# <div class="class-scroll">
         <div class="class-header-container">
             <h2 class="class-header"></h2>
         </div>
@@ -42,31 +54,27 @@
         <div class="assignment-container">
             <h2 class="assign-header"></h2>
         </div>
-    </div>
-    <div class="class-scroll">
-        <div class="class-header-container">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div>
+    </div> #}
 </body>
 
 <script type="text/javascript">
-    let courseArr = parseCourses({{ courses|tojson }})
-    let assignArr = parseAssignments({{ assignments|tojson }})
-    console.log(assignArr[0])
-    headers = document.querySelectorAll(".class-header")
-    assigns = document.querySelectorAll(".assign-header")
-    console.log(assigns.length)
-    for (let i = 0; i < headers.length; ++i) {
-        headers[i].textContent = courseArr[i].name
-    }
-    for (let i = 0; i < assigns.length; ++i) {
-        console.log(assignArr[i].summary)
-        assigns[i].textContent = assignArr[i].summary
-    }
+        $(function() {
+          $('a#a').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/update',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        let courseArr = parseCourses({{ courses|tojson }})
+        let assignArr = parseAssignments({{ assignments|tojson }}, courseArr)
+        for (let i = 0; i < courseArr.length; ++i) {
+            if (assignArr[i]){
+                createClassScroll(courseArr[i], assignArr[i])
+            }
+        }
 </script>
 
 </html>

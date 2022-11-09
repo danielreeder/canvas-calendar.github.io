@@ -20,7 +20,12 @@ def canvas():
     assignments = readAssignments()
 
 
-    return render_template("canvas.html.j2", courses=courses, assignments=assignments)
+    return render_template("canvas.html", courses=courses, assignments=assignments)
+
+@views.route("/update")
+def test():
+    writeData(user)
+    return "nothing"
 
 @views.route("/node-send")
 def nodeSend():

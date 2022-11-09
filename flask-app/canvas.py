@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 import random as rand
 import json
+import glob
 load_dotenv()
 
 # Canvas API URL
@@ -57,6 +58,13 @@ def courseToJson(course):
     }}
 
 def writeData(user):
+    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses"
+    for file in os.listdir(dir):
+        os.remove(os.path.join(dir,file))
+    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    for file in os.listdir(dir):
+        os.remove(os.path.join(dir,file))
+
     courses = user.get_courses()
     i = 0
     for course in courses:
@@ -86,7 +94,7 @@ def writeData(user):
                 },
                 "colorId": rand.randint(1,11),
                 "id": assignment.id,
-                "course-id": assignment.course_id
+                "courseId": assignment.course_id
             }
             assignFile.write(json.dumps(aDict, indent=4))
             assignFile.close()
