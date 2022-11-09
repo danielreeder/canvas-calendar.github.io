@@ -1,9 +1,10 @@
 from asyncore import write
 from flask import Blueprint, render_template, jsonify, request
-from canvas import *
+from canvas import writeData, readCourses, readAssignments, user
 import json
 import requests
 import random as rand
+from os.path import exists
 
 views = Blueprint(__name__, "views")
 
@@ -13,9 +14,13 @@ def home():
 
 @views.route("/canvas")
 def canvas():
-    # needs to take all classes and assignments as json and pass to html
-    # to be dealt with in javascript
-    return render_template("canvas.html.j2", courses=coursesToJson(courses), assignments=assignmentsToJson(courses))
+    if exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses.txt") and exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments.txt"):
+        writeData(user)
+    courses = readCourses()
+    assignments = readAssignments()
+
+
+    return render_template("canvas.html.j2", courses=courses, assignments=assignments)
 
 @views.route("/node-send")
 def nodeSend():
@@ -40,7 +45,7 @@ def nodeSend():
     #         assignmentInfo += {assignmentJson}
     #         break
 
-    res = requests.post('http://127.0.0.1:6000/node-send', json=assignmentsToJson(courses))
+    res = requests.post('http://127.0.0.1:6000/node-send', json=readCourses())
 
     returned = res.json()
 
