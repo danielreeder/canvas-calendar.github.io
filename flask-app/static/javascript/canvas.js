@@ -15,7 +15,6 @@ function parseCourses(courses) {
 
 
 function parseAssignments(assignments, courses) {
-    let assignArr = []
     courseIds = new Array(courses.length)
     courses.forEach(course => {
         courseIds.push(course.id)
@@ -29,12 +28,27 @@ function parseAssignments(assignments, courses) {
         }
         assignByCourse[assignIndex].push(assign)
     })
+    assignByCourse.forEach(array => {
+        array = array.sort((date1, date2) => {
+            if (date1.start.dateTime && date2.start.dateTime){
+                date3 = new Date(date1.start.dateTime)
+                date4 = new Date(date2.start.dateTime)
+                return date4.getTime() - date3.getTime()
+            }
+            else {
+                return 1
+            }
+        })
+
+    })
     console.log(assignByCourse)
 
     return assignByCourse
 }
 
 function createClassScroll(course, assigns) {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December']
     let courseName = course.name
     const date = new Date()
     let scroll = document.createElement("div")
@@ -50,15 +64,32 @@ function createClassScroll(course, assigns) {
     assignmentsContainer.classList.add('assignments-container')
 
     assigns.forEach(assign => {
+        dueDate = new Date(assign.start.dateTime)
+        today = new Date()
+        time = today.getTime()
+        dateStr = 'Due: ' + months[dueDate.getMonth() - 1] + ' ' + dueDate.getDate() + ' at ' + 
+                         dueDate.getHours()%12 + ':' + dueDate.getMinutes() + (dueDate.getHours() >= 12 ? ' P.M.' : ' A.M.')
         let assignContainer = document.createElement("div")
         assignContainer.classList.add('assignment-container', 'shadow-card')
         let assignHeader = document.createElement("div")
-        assignHeader.classList.add('assignment-header', 'shadow-card')
+        assignHeader.classList.add('assignment-header')
         let assignHeaderText = document.createElement("h4")
         assignHeaderText.classList.add('assignment-header-text')
         assignHeaderText.textContent = assign.summary
+        let dateText = document.createElement("h5")
+        dateText.classList.add('date-text')
+        dateText.textContent = dateStr
+        assignHeader.id = assign.id
         assignHeader.append(assignHeaderText)
+        assignHeader.append(dateText)
         assignContainer.append(assignHeader)
+        if (dueDate.getTime() < time) {
+            assignContainer.classList.add('old-assign')
+            let removeBtn = document.createElement('a')
+            removeBtn.classList.add('btn', 'remove-btn')
+            removeBtn.textContent = "Remove from Calendar"
+            assignContainer.append(removeBtn)
+        }
         assignmentsContainer.append(assignContainer)
     })
 

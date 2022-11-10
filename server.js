@@ -26,4 +26,29 @@ app.post("/node-send", (req, res) => {
     })
 })
 
+app.post("/remove", (req, res) => {
+    console.log(req.body)
+    date = new Date()
+    test = {
+      calendarId: 'primary',
+      summary: 'test',
+      id: req.body.id,
+      start: {
+        dateTime: date,
+        timeZone: 'America/Los_Angeles',
+      },
+      end: {
+        dateTime: date,
+        timeZone: 'America/Los_Angeles',
+      },
+    }
+    // response = google.addAssignment(test)
+    response = google.removeAssignment(req.body.id)
+
+    res.json({
+      received: 'true',
+      respond: response
+    })
+})
+
 app.listen(6000)

@@ -27,6 +27,18 @@ def test():
     writeData(user)
     return "nothing"
 
+@views.route("/remove")
+def remove(methods=['POST']):
+    id = request.args.get('arg')
+    json = {
+        "id": id
+    }
+    res = requests.post('http://127.0.0.1:6000/remove', json=json)
+    returned = res.json()
+    print(returned['received'])
+    # print(returned['respond'])
+    return 'balls'
+
 @views.route("/node-send")
 def nodeSend():
     # courses = canvas.getCourses()

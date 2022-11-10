@@ -1,3 +1,11 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --assign-gap: 0.8rem;
+    --assign-adjustment: calc(var(--assign-gap) * 0.8)
+}
 body {
     display: flex;
     flex-direction: column;
@@ -17,7 +25,7 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    padding: 1rem 1rem;
+    padding: .75rem;
     margin-block: 1rem;
     max-height: 20%;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4);
@@ -25,45 +33,100 @@ body {
     overflow: hidden;
 }
 .class-header-container {
-    padding-inline: .75rem;
+    padding: .75rem;
+    margin: .25rem;
 }
 
 .assignment-container {
+    flex: 0 0 20%;
+    min-width: 200px;
+    max-width: calc(20% - var(--assign-adjustment));
     height: 300px;
     padding: .75rem;
     padding-top: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+.assignment-container::before {
+    display: block;
+    content: " ";
+    width: 100%;
+    border-radius: inherit;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-bottom: 1px solid #6a6;
+    height: 75%;
+    background-color: #6a6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
 .assignments-container { 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: .75rem;
+    overflow: scroll;
+    display: flex;
+    gap: var(--assign-gap);
+    padding: .25rem;
+    position: relative;
 }
 
 .assignment-header {
+    max-width: 100%;
     max-height: fit-content;
-    padding-block: .05rem;
     margin-top: 1rem;
+    position: absolute;
+    left: 3%;
+    bottom: 20%;
+    z-index: 2;
+    color: white;
 }
 
 .bg-color {
     background: #6a6
 }
 
-.refresh-btn {
-    border: 1px solid black;
-    padding: .5rem .5rem;
-    border-radius: .2rem;
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header-text {
+    margin: 0;
+}
+
+.btn {
+    border: 1px solid #6a6;
+    color: #6a6;
+    padding: .5rem 5rem;
+    border-radius: .5rem;
     cursor: pointer;
     transition: background-color 200ms ease-in-out,
                 color 200ms ease-in-out;
 }
 
-.refresh-btn:hover {
+.btn:hover {
     background-color: #6a6;
     color: white;
+    border: 1px solid white;
 }
 
-.old-assign {
-    background-color: rgba(f,f,f,.6);
+.old-assign{
+    opacity: .5;
+}
+
+.remove-btn {
+    z-index: 100;
+    margin-bottom: calc(12.5% - 1.5rem);
+    border: 1px solid #6a6;
+    padding: .5rem 1rem;
+    border-radius: .75rem;
+    text-align: center;
+    color: #6a6;
+    cursor: pointer;
 }

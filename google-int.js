@@ -1,3 +1,4 @@
+const res = require('express/lib/response')
 const { google } = require('googleapis')
 const { OAuth2 } = google.auth
 require('dotenv').config()
@@ -33,5 +34,19 @@ function listEvents(){
     })
 }
 
+function removeAssignment(id) {
+    calendar.events.delete({
+        calendarId: 'primary',
+        eventId: id
+    }, err => {
+        if (err) {
+            return console.error('Calendar Event Deletion Error', err)
+        }
+
+        return console.log('Calendar Event Created')
+    })
+}
+
 exports.addAssignment = addAssignment
 exports.listEvents = listEvents
+exports.removeAssignment = removeAssignment

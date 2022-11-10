@@ -13,48 +13,9 @@
 </head>
 <body class="bg-color">
     <div class="site-header shadow-card">
-        <a id="a" class="refresh-btn">Update</a>
+        <h2 class="site-header-text"> Canvas Calendar </h2>
+        <a id="a" class="btn">Update Courses and Assignments</a>
     </div>
-    {# <div class="class-scroll shadow-card">
-        <div class="class-header-container shadow-card">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container shadow-card">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div> #}
-    {# <div class="class-scroll">
-        <div class="class-header-container">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div>
-    <div class="class-scroll">
-        <div class="class-header-container">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div>
-    <div class="class-scroll">
-        <div class="class-header-container">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div>
-    <div class="class-scroll">
-        <div class="class-header-container">
-            <h2 class="class-header"></h2>
-        </div>
-        <div class="assignment-container">
-            <h2 class="assign-header"></h2>
-        </div>
-    </div> #}
 </body>
 
 <script type="text/javascript">
@@ -62,6 +23,18 @@
           $('a#a').on('click', function(e) {
             e.preventDefault()
             $.getJSON('/update',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        $(function() {
+          $('a.remove-btn').on('click', function(e) {
+            e.preventDefault()
+            value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
+            console.log(value)
+            $.getJSON('/remove?arg='+value,
                 function(data) {
               //do nothing
             });
