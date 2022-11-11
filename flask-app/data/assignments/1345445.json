@@ -1,1 +1,15 @@
-{"summary":"Ch 8 QUIZ 8","start":{"dateTime":"2022-11-15T07:59:00Z","timeZone":"America/Los_Angeles"},"end":{"dateTime":"2022-11-15T07:59:00Z","timeZone":"America/Los_Angeles"},"colorId":4,"id":1345445,"courseId":206862,"status":"cancelled"}
+{
+    "summary": "Ch 8 QUIZ 8",
+    "start": {
+        "dateTime": "2022-11-15T07:59:00Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "end": {
+        "dateTime": "2022-11-15T07:59:00Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "colorId": 1,
+    "id": 1345445,
+    "courseId": 206862,
+    "status": "confirmed"
+}

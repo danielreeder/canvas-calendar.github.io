@@ -1,1 +1,15 @@
-{"summary":"Homework 4","start":{"dateTime":"2022-10-22T06:59:59Z","timeZone":"America/Los_Angeles"},"end":{"dateTime":"2022-10-22T06:59:59Z","timeZone":"America/Los_Angeles"},"colorId":3,"id":1356512,"courseId":206689,"status":"confirmed"}
+{
+    "summary": "Homework 4",
+    "start": {
+        "dateTime": "2022-10-22T06:59:59Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "end": {
+        "dateTime": "2022-10-22T06:59:59Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "colorId": 4,
+    "id": 1356512,
+    "courseId": 206689,
+    "status": "confirmed"
+}

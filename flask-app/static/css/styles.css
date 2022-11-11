@@ -5,9 +5,9 @@
 :root {
     --assign-gap: 0.8rem;
     --assign-adjustment: calc(var(--assign-gap) * 0.8);
-    --main-color: #66a;
-    --main-color-rgba: rgba(102, 102, 170, .5);
-    --bg-color: #131366;
+    --main-color: #6a6;
+    --main-color-rgba: rgba(102, 170, 102, .5);
+    --bg-color: #136613;
 }
 body {
     display: flex;
@@ -116,7 +116,7 @@ body {
 }
 
 .btn:hover {
-    background-color: rgba(var(--main-color));
+    background-color: var(--main-color);
     color: white;
     border: 1px solid white;
 }
@@ -168,6 +168,8 @@ body {
     max-height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .btn-container {

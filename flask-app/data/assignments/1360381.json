@@ -1,1 +1,15 @@
-{"summary":"Assignment 6","start":{"dateTime":"2022-11-19T07:59:59Z","timeZone":"America/Los_Angeles"},"end":{"dateTime":"2022-11-19T07:59:59Z","timeZone":"America/Los_Angeles"},"colorId":9,"id":1360381,"courseId":210905,"status":"confirmed"}
+{
+    "summary": "Assignment 6",
+    "start": {
+        "dateTime": "2022-11-19T07:59:59Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "end": {
+        "dateTime": "2022-11-19T07:59:59Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "colorId": 8,
+    "id": 1360381,
+    "courseId": 210905,
+    "status": "confirmed"
+}

@@ -15,7 +15,7 @@ def home():
 
 @views.route("/canvas")
 def canvas():
-    if not exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments/exists.txt") and not exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses/exists.txt"):
+    if not exists(os.getenv('COURSE_PATH') + 'exists.txt') and not exists(os.getenv('ASSIGNMENT_PATH') + 'exists.txt'):
         writeData(user)
     courses = readCourses()
     assignments = readAssignments()
@@ -31,7 +31,7 @@ def test():
 def remove(methods=['POST']):
     id = request.args.get('arg')
     file = id + '.json'
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    dir = os.getenv('ASSIGNMENT_PATH')
     assignment = readFile(file, dir)
     res = requests.post('http://127.0.0.1:6000/remove', json=assignment)
     returned = res.json()
@@ -42,7 +42,7 @@ def remove(methods=['POST']):
 def add(methods=['POST']):
     id = request.args.get('arg')
     file = id + '.json'
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    dir = os.getenv('ASSIGNMENT_PATH')
     assignment = readFile(file, dir)
     res = requests.post('http://127.0.0.1:6000/add', json=assignment)
     returned = res.json()

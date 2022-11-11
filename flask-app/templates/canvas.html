@@ -40,10 +40,10 @@
             e.preventDefault()
             value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
             console.log(value)
-            //$.getJSON('/remove?arg='+value,
-             //   function(data) {
-                    // do nothing
-            //});
+            $.getJSON('/remove?arg='+value,
+               function(data) {
+                    //do nothing
+            });
             let del_msg = document.querySelector('.del-msg')
             if (!del_msg.classList.contains('msg-slide-in')){
                 del_msg.classList.add('msg-slide-in')
@@ -59,9 +59,9 @@
             e.preventDefault()
             value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
             console.log(value)
-            //$.getJSON('/add?arg='+value, data => {
-                // do nothing
-            //});
+            $.getJSON('/add?arg='+value, data => {
+                //do nothing
+            });
             let add_msg = document.querySelector('.add-msg')
             if (!add_msg.classList.contains('msg-slide-in')){
                 add_msg.classList.add('msg-slide-in')

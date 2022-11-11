@@ -21,9 +21,6 @@ function addAssignment(assignment) {
     }, err => {
         if (err) {
             if (err = ' GaxiosError: The requested identifier already exists'){
-                assignment.status = "confirmed"
-                path = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments' + '/' + assignment.id + '.json'
-                fs.writeFile(path, JSON.stringify(assignment), { flag: 'w+' }, err => {});
                 calendar.events.update({
                     calendarId: 'primary',
                     eventId: assignment.id,
@@ -58,7 +55,7 @@ function removeAssignment(assignment) {
             return console.err(err)
         }
     })
-    return console.log('Calendar event removed')
+    return console.log('Calendar Event semoved')
 }
 
 exports.addAssignment = addAssignment

@@ -57,17 +57,17 @@ def courseToJson(course):
     }}
 
 def writeData(user):
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses"
+    dir = os.getenv('COURSE_PATH')
     for file in os.listdir(dir):
         os.remove(os.path.join(dir,file))
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    dir = os.getenv('ASSIGNMENT_PATH')
     for file in os.listdir(dir):
         os.remove(os.path.join(dir,file))
     courses = user.get_courses()
     i = 0
     for course in courses:
         id = "%s"%course.id 
-        cFile = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses/" + id + ".json"
+        cFile = os.getenv('COURSE_PATH') + id + ".json"
         courseFile = open(cFile, 'w')
         cDict = {
             "name": course.course_code,
@@ -78,7 +78,8 @@ def writeData(user):
         assignments = course.get_assignments()
         for assignment in assignments:
             id = "%s"%assignment.id
-            aFile = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments/" + id + ".json"
+            aFile = os.getenv('ASSIGNMENT_PATH')+ id + ".json"
+            print(aFile)
             assignFile = open(aFile, 'w')
             aDict = {
                 "summary": assignment.name,
@@ -98,15 +99,15 @@ def writeData(user):
             assignFile.write(json.dumps(aDict, indent=4))
             assignFile.close()
         i += 1
-    existPath = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments/exists.txt'
+    existPath = os.getenv('COURSE_PATH') + 'exists.txt'
     existFile = open(existPath, 'w')
     existFile.write('exists')
-    existPath = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses/exists.txt'
+    existPath = os.getenv('COURSE_PATH') + 'exists.txt'
     existFile = open(existPath, 'w')
     existFile.write('exists')
     
 def readCourses():
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses"
+    dir = os.getenv('COURSE_PATH')
     courses = []
     for file in os.listdir(dir):
         if 'exists' not in file:
@@ -114,7 +115,7 @@ def readCourses():
     return courses
 
 def readAssignments():
-    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    dir = os.getenv('ASSIGNMENT_PATH')
     assignments = []
     for file in os.listdir(dir):
         if 'exists' not in file:
