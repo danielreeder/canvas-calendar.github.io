@@ -1,9 +1,10 @@
 from asyncore import write
-from flask import Blueprint, render_template, jsonify, request
-from canvas import writeData, readCourses, readAssignments, user
+from flask import Blueprint, render_template, jsonify, request, redirect, url_for
+from canvas import writeData, readCourses, readAssignments, user, readFile
 import json
 import requests
 import random as rand
+import os
 from os.path import exists
 
 views = Blueprint(__name__, "views")
@@ -14,11 +15,10 @@ def home():
 
 @views.route("/canvas")
 def canvas():
-    if exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses.txt") and exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments.txt"):
+    if not exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments/exists.txt") and not exists("/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses/exists.txt"):
         writeData(user)
     courses = readCourses()
     assignments = readAssignments()
-
 
     return render_template("canvas.html", courses=courses, assignments=assignments)
 
@@ -30,14 +30,26 @@ def test():
 @views.route("/remove")
 def remove(methods=['POST']):
     id = request.args.get('arg')
-    json = {
-        "id": id
-    }
-    res = requests.post('http://127.0.0.1:6000/remove', json=json)
+    file = id + '.json'
+    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    assignment = readFile(file, dir)
+    res = requests.post('http://127.0.0.1:6000/remove', json=assignment)
     returned = res.json()
     print(returned['received'])
-    # print(returned['respond'])
-    return 'balls'
+    return 'nothing'
+
+@views.route("/add")
+def add(methods=['POST']):
+    id = request.args.get('arg')
+    file = id + '.json'
+    dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
+    assignment = readFile(file, dir)
+    res = requests.post('http://127.0.0.1:6000/add', json=assignment)
+    returned = res.json()
+    print(returned['received'])
+    return 'nothing'
+
+
 
 @views.route("/node-send")
 def nodeSend():

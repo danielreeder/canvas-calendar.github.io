@@ -1,14 +1,1 @@
-{
-    "summary": "Personal Website",
-    "start": {
-        "dateTime": "2022-11-19T07:59:59Z",
-        "timeZone": "America/Los_Angeles"
-    },
-    "end": {
-        "dateTime": "2022-11-19T07:59:59Z",
-        "timeZone": "America/Los_Angeles"
-    },
-    "colorId": 6,
-    "id": 1359746,
-    "courseId": 210956
-}
+{"summary":"Personal Website","start":{"dateTime":"2022-11-19T07:59:59Z","timeZone":"America/Los_Angeles"},"end":{"dateTime":"2022-11-19T07:59:59Z","timeZone":"America/Los_Angeles"},"colorId":2,"id":1359746,"courseId":210956,"status":"confirmed"}

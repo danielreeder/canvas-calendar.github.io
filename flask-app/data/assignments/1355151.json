@@ -1,14 +1,1 @@
-{
-    "summary": "Project Milestone",
-    "start": {
-        "dateTime": "2022-11-05T06:59:59Z",
-        "timeZone": "America/Los_Angeles"
-    },
-    "end": {
-        "dateTime": "2022-11-05T06:59:59Z",
-        "timeZone": "America/Los_Angeles"
-    },
-    "colorId": 8,
-    "id": 1355151,
-    "courseId": 210956
-}
+{"summary":"Project Milestone","start":{"dateTime":"2022-11-05T06:59:59Z","timeZone":"America/Los_Angeles"},"end":{"dateTime":"2022-11-05T06:59:59Z","timeZone":"America/Los_Angeles"},"colorId":3,"id":1355151,"courseId":210956,"status":"cancelled"}

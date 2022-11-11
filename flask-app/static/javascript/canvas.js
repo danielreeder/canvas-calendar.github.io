@@ -67,8 +67,9 @@ function createClassScroll(course, assigns) {
         dueDate = new Date(assign.start.dateTime)
         today = new Date()
         time = today.getTime()
-        dateStr = 'Due: ' + months[dueDate.getMonth() - 1] + ' ' + dueDate.getDate() + ' at ' + 
-                         dueDate.getHours()%12 + ':' + dueDate.getMinutes() + (dueDate.getHours() >= 12 ? ' P.M.' : ' A.M.')
+        dateStr = 'Due: ' + months[dueDate.getMonth()] + ' ' + dueDate.getDate() + ' at ' + 
+                         dueDate.getHours()%12 + ':' + (dueDate.getMinutes() < 10 ? '0'+dueDate.getMinutes() : dueDate.getMinutes())
+                        + (dueDate.getHours() >= 12 ? ' P.M.' : ' A.M.')
         let assignContainer = document.createElement("div")
         assignContainer.classList.add('assignment-container', 'shadow-card')
         let assignHeader = document.createElement("div")
@@ -83,13 +84,22 @@ function createClassScroll(course, assigns) {
         assignHeader.append(assignHeaderText)
         assignHeader.append(dateText)
         assignContainer.append(assignHeader)
+        let addBtn = document.createElement('a')
+        addBtn.classList.add('btn', 'add-btn')
+        addBtn.textContent = 'Add to Calendar'
+        let btnContainer = document.createElement('div')
+        btnContainer.classList.add('btn-container')
+        let removeBtn = document.createElement('a')
+        removeBtn.classList.add('btn', 'remove-btn', 'two-btn')
+        addBtn.classList.add('two-btn')
+        removeBtn.textContent = "Remove from Calendar"
+        btnContainer.append(addBtn)
+        btnContainer.append(removeBtn)
         if (dueDate.getTime() < time) {
             assignContainer.classList.add('old-assign')
-            let removeBtn = document.createElement('a')
-            removeBtn.classList.add('btn', 'remove-btn')
-            removeBtn.textContent = "Remove from Calendar"
-            assignContainer.append(removeBtn)
         }
+        
+        assignContainer.append(btnContainer)
         assignmentsContainer.append(assignContainer)
     })
 

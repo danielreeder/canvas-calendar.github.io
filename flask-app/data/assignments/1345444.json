@@ -8,7 +8,8 @@
         "dateTime": "2022-11-07T07:59:00Z",
         "timeZone": "America/Los_Angeles"
     },
-    "colorId": 9,
+    "colorId": 1,
     "id": 1345444,
-    "courseId": 206862
+    "courseId": 206862,
+    "status": "confirmed"
 }

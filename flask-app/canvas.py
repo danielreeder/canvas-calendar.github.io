@@ -5,7 +5,6 @@ import os
 from dotenv import load_dotenv
 import random as rand
 import json
-import glob
 load_dotenv()
 
 # Canvas API URL
@@ -64,7 +63,6 @@ def writeData(user):
     dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
     for file in os.listdir(dir):
         os.remove(os.path.join(dir,file))
-
     courses = user.get_courses()
     i = 0
     for course in courses:
@@ -94,31 +92,43 @@ def writeData(user):
                 },
                 "colorId": rand.randint(1,11),
                 "id": assignment.id,
-                "courseId": assignment.course_id
+                "courseId": assignment.course_id,
+                "status": "confirmed"
             }
             assignFile.write(json.dumps(aDict, indent=4))
             assignFile.close()
         i += 1
+    existPath = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments/exists.txt'
+    existFile = open(existPath, 'w')
+    existFile.write('exists')
+    existPath = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses/exists.txt'
+    existFile = open(existPath, 'w')
+    existFile.write('exists')
     
 def readCourses():
     dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/courses"
     courses = []
     for file in os.listdir(dir):
-        rFile = open(os.path.join(dir, file), 'r')
-        course = json.load(rFile)
-        courses += [course]
+        if 'exists' not in file:
+            courses += [readFile(file, dir)]
     return courses
 
 def readAssignments():
     dir = "/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments"
     assignments = []
     for file in os.listdir(dir):
-        rFile = open(os.path.join(dir, file), 'r')
-        assignment = json.load(rFile)
-        assignments += [assignment]
+        if 'exists' not in file:
+            assignments += [readFile(file, dir)]
     return assignments
-readCourses()
-readAssignments()
+
+def readFile(file, dir):
+    rFile = open(os.path.join(dir, file), 'r')
+    contents = json.load(rFile)
+    return contents
+
+    
+# readCourses()
+# readAssignments()
 
 
 # writeData(user)

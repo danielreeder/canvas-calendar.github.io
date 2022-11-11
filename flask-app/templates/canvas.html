@@ -12,6 +12,12 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body class="bg-color">
+    <div class="message add-msg">
+        <h1 class='msg-text'>Assignment added to calendar</h1>
+    </div>
+    <div class="message del-msg">
+        <h1 class='msg-text'>Assignment removed from calendar</h1>
+    </div>
     <div class="site-header shadow-card">
         <h2 class="site-header-text"> Canvas Calendar </h2>
         <a id="a" class="btn">Update Courses and Assignments</a>
@@ -34,10 +40,35 @@
             e.preventDefault()
             value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
             console.log(value)
-            $.getJSON('/remove?arg='+value,
-                function(data) {
-              //do nothing
-            });
+            //$.getJSON('/remove?arg='+value,
+             //   function(data) {
+                    // do nothing
+            //});
+            let del_msg = document.querySelector('.del-msg')
+            if (!del_msg.classList.contains('msg-slide-in')){
+                del_msg.classList.add('msg-slide-in')
+                setTimeout(() => {
+                    del_msg.classList.remove('msg-slide-in')
+                }, 3000);
+            }
+            return false;
+          });
+        });
+        $(function() {
+          $('a.add-btn').on('click', function(e) {
+            e.preventDefault()
+            value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
+            console.log(value)
+            //$.getJSON('/add?arg='+value, data => {
+                // do nothing
+            //});
+            let add_msg = document.querySelector('.add-msg')
+            if (!add_msg.classList.contains('msg-slide-in')){
+                add_msg.classList.add('msg-slide-in')
+                setTimeout(() => {
+                    add_msg.classList.remove('msg-slide-in')
+                }, 3000);
+            }
             return false;
           });
         });

@@ -8,7 +8,8 @@
         "dateTime": null,
         "timeZone": "America/Los_Angeles"
     },
-    "colorId": 4,
+    "colorId": 6,
     "id": 1356233,
-    "courseId": 206862
+    "courseId": 206862,
+    "status": "confirmed"
 }

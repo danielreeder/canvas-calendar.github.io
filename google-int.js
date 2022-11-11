@@ -2,6 +2,7 @@ const res = require('express/lib/response')
 const { google } = require('googleapis')
 const { OAuth2 } = google.auth
 require('dotenv').config()
+const fs = require('fs')
 const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
 
 oAuth2Client.setCredentials({
@@ -18,7 +19,20 @@ function addAssignment(assignment) {
         calendarId: 'primary',
         resource: assignment
     }, err => {
-        if (err) return console.error('Calendar Event Creation Error', err)
+        if (err) {
+            if (err = ' GaxiosError: The requested identifier already exists'){
+                assignment.status = "confirmed"
+                path = '/Users/danielreeder/Desktop/CS407 Project/flask-app/data/assignments' + '/' + assignment.id + '.json'
+                fs.writeFile(path, JSON.stringify(assignment), { flag: 'w+' }, err => {});
+                calendar.events.update({
+                    calendarId: 'primary',
+                    eventId: assignment.id,
+                    resource: assignment
+                })
+                return console.log("Calendar Event Updated")
+            }
+            return console.error('Calendar Event Creation Error', err)
+        }
 
         return console.log('Calendar Event Created')
     })
@@ -34,17 +48,17 @@ function listEvents(){
     })
 }
 
-function removeAssignment(id) {
+function removeAssignment(assignment) {
+    assignment.status = "cancelled"
     calendar.events.delete({
         calendarId: 'primary',
-        eventId: id
+        eventId: assignment.id
     }, err => {
         if (err) {
-            return console.error('Calendar Event Deletion Error', err)
+            return console.err(err)
         }
-
-        return console.log('Calendar Event Created')
     })
+    return console.log('Calendar event removed')
 }
 
 exports.addAssignment = addAssignment
