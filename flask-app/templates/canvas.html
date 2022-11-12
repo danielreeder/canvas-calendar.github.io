@@ -5,21 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Canvas</title>
     <script 
-        type="text/javascript" 
         src="{{ url_for('static', filename='javascript/canvas.js')}}">
     </script>
-    <script type="text/javascript">
-        myVar = myFunc('{{ data|tojson }}')
-        console.log(myVar)
-    </script>
-    <title>Canvas</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
-<body>
-    <div class="class-scroll"></div>
-        <div class="class-header-container">
-            <h2 class="class-header">Temp Class</h2>
-        </div>
-        <div class="assignment-container">{{ value }}</div>
+<body class="bg-color">
+    <div class="message add-msg">
+        <h1 class='msg-text'>Assignment added to calendar</h1>
+    </div>
+    <div class="message del-msg">
+        <h1 class='msg-text'>Assignment removed from calendar</h1>
+    </div>
+    <div class="site-header shadow-card">
+        <h2 class="site-header-text"> Canvas Calendar </h2>
+        <a id="a" class="btn">Update Courses and Assignments</a>
+    </div>
 </body>
+
+<script type="text/javascript">
+        $(function() {
+          $('a#a').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/update',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        $(function() {
+          $('a.remove-btn').on('click', function(e) {
+            e.preventDefault()
+            value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
+            console.log(value)
+            $.getJSON('/remove?arg='+value,
+               function(data) {
+                    //do nothing
+            });
+            let del_msg = document.querySelector('.del-msg')
+            if (!del_msg.classList.contains('msg-slide-in')){
+                del_msg.classList.add('msg-slide-in')
+                setTimeout(() => {
+                    del_msg.classList.remove('msg-slide-in')
+                }, 3000);
+            }
+            return false;
+          });
+        });
+        $(function() {
+          $('a.add-btn').on('click', function(e) {
+            e.preventDefault()
+            value = e.target.closest('.assignment-container').querySelector('.assignment-header').id
+            console.log(value)
+            $.getJSON('/add?arg='+value, data => {
+                //do nothing
+            });
+            let add_msg = document.querySelector('.add-msg')
+            if (!add_msg.classList.contains('msg-slide-in')){
+                add_msg.classList.add('msg-slide-in')
+                setTimeout(() => {
+                    add_msg.classList.remove('msg-slide-in')
+                }, 3000);
+            }
+            return false;
+          });
+        });
+        let courseArr = parseCourses({{ courses|tojson }})
+        let assignArr = parseAssignments({{ assignments|tojson }}, courseArr)
+        for (let i = 0; i < courseArr.length; ++i) {
+            if (assignArr[i]){
+                createClassScroll(courseArr[i], assignArr[i])
+            }
+        }
+</script>
+
 </html>

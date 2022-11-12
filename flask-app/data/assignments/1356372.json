@@ -1,0 +1,15 @@
+{
+    "summary": "Midterm Exam",
+    "start": {
+        "dateTime": "2022-10-31T21:15:00Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "end": {
+        "dateTime": "2022-10-31T21:15:00Z",
+        "timeZone": "America/Los_Angeles"
+    },
+    "colorId": 5,
+    "id": 1356372,
+    "courseId": 210905,
+    "status": "confirmed"
+}
