@@ -1,3 +1,7 @@
+function reloadPage() {
+    window.location.reload()
+}
+
 function parseCourses(courses) {
     let courseArr = []
     let courseIds = []

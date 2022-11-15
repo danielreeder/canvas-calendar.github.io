@@ -79,7 +79,6 @@ def writeData(user):
         for assignment in assignments:
             id = "%s"%assignment.id
             aFile = os.getenv('ASSIGNMENT_PATH')+ id + ".json"
-            print(aFile)
             assignFile = open(aFile, 'w')
             aDict = {
                 "summary": assignment.name,
@@ -126,25 +125,3 @@ def readFile(file, dir):
     rFile = open(os.path.join(dir, file), 'r')
     contents = json.load(rFile)
     return contents
-
-    
-# readCourses()
-# readAssignments()
-
-
-# writeData(user)
-# def main():
-#     # Canvas API URL
-#     API_URL = os.getenv('CANVAS_URL')
-#     # Canvas API key
-#     API_KEY = os.getenv('CANVAS_API_KEY')
-
-#     # Initialize a new Canvas object
-#     canvas = Canvas(API_URL, API_KEY)
-
-#     me = canvas.get_user(156260)
-
-#     courses = me.get_courses() 
-#     print(assignmentsToJson(courses))
-#     print(coursesToJson(courses))
-# main()

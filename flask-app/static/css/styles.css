@@ -7,7 +7,7 @@
     --assign-adjustment: calc(var(--assign-gap) * 0.8);
     --main-color: #6a6;
     --main-color-rgba: rgba(102, 170, 102, .5);
-    --bg-color: #136613;
+    --bg-color: rgb(92, 130, 92);
 }
 body {
     display: flex;

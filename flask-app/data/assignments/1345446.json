@@ -1,14 +1,14 @@
 {
     "summary": "Ch 8 HW 8",
     "start": {
-        "dateTime": "2022-11-14T07:59:00Z",
+        "dateTime": "2022-11-15T07:59:00Z",
         "timeZone": "America/Los_Angeles"
     },
     "end": {
-        "dateTime": "2022-11-14T07:59:00Z",
+        "dateTime": "2022-11-15T07:59:00Z",
         "timeZone": "America/Los_Angeles"
     },
-    "colorId": 1,
+    "colorId": 8,
     "id": 1345446,
     "courseId": 206862,
     "status": "confirmed"
