@@ -1,15 +1,15 @@
 {
-    "summary": "Assignment 5",
+    "summary": "Homework 7",
     "start": {
-        "dateTime": "2022-11-12T07:59:59Z",
+        "dateTime": "2022-11-17T07:59:59Z",
         "timeZone": "America/Los_Angeles"
     },
     "end": {
-        "dateTime": "2022-11-12T07:59:59Z",
+        "dateTime": "2022-11-17T07:59:59Z",
         "timeZone": "America/Los_Angeles"
     },
     "colorId": 1,
-    "id": 1357171,
-    "courseId": 210905,
+    "id": 1362540,
+    "courseId": 206689,
     "status": "confirmed"
 }

@@ -1,15 +1,15 @@
 {
-    "summary": "Assignment 3",
+    "summary": "Assignment 7",
     "start": {
-        "dateTime": "2022-10-23T06:59:59Z",
+        "dateTime": "2022-11-28T07:59:59Z",
         "timeZone": "America/Los_Angeles"
     },
     "end": {
-        "dateTime": "2022-10-23T06:59:59Z",
+        "dateTime": "2022-11-28T07:59:59Z",
         "timeZone": "America/Los_Angeles"
     },
-    "colorId": 8,
-    "id": 1353017,
+    "colorId": 11,
+    "id": 1362765,
     "courseId": 210905,
     "status": "confirmed"
 }

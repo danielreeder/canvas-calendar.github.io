@@ -101,7 +101,7 @@ def writeData(user):
     existPath = os.getenv('COURSE_PATH') + 'exists.txt'
     existFile = open(existPath, 'w')
     existFile.write('exists')
-    existPath = os.getenv('COURSE_PATH') + 'exists.txt'
+    existPath = os.getenv('ASSIGNMENT_PATH') + 'exists.txt'
     existFile = open(existPath, 'w')
     existFile.write('exists')
     

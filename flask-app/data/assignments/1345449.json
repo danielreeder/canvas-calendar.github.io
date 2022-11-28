@@ -1,15 +1,15 @@
 {
-    "summary": "Ch 9 HW 9",
+    "summary": "Ch 15 HW 10",
     "start": {
-        "dateTime": "2022-11-19T07:59:00Z",
+        "dateTime": "2022-11-27T07:59:00Z",
         "timeZone": "America/Los_Angeles"
     },
     "end": {
-        "dateTime": "2022-11-19T07:59:00Z",
+        "dateTime": "2022-11-27T07:59:00Z",
         "timeZone": "America/Los_Angeles"
     },
-    "colorId": 2,
-    "id": 1345447,
+    "colorId": 9,
+    "id": 1345449,
     "courseId": 206862,
     "status": "confirmed"
 }
